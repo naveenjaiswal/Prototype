@@ -42,6 +42,8 @@ public class Splash extends AppCompatActivity {
 
             @Override
             public void run() {
+
+                
                 // This method will be executed once the timer is over
                 // Start your app main activity
 
@@ -50,6 +52,7 @@ public class Splash extends AppCompatActivity {
                 SharedPreferences shf = getSharedPreferences("LogggedInUserName", Context.MODE_PRIVATE);
                 if(shf!=null) {
                     strPref = shf.getString("UserName", null);
+
 
                     if (strPref != null) {
                         // do some thing

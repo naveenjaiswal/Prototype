@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity
                 recyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.getAppContext()));
 
                 // Add separator
-                recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getAppContext(), DividerItemDecoration.VERTICAL_LIST));
+                recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL_LIST));
                 // That's all!
 
                 // Remember to CLEAR OUT old items before appending in the new ones
