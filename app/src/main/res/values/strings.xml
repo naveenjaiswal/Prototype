@@ -18,5 +18,7 @@
     <string name="default_text">This is a default text</string>
     <string name="no_data_found">No Data Found</string>
     <string name="title_activity_places_info">Places</string>
+    <string name="title_activity_splash">Splash</string>
+    <string name="gyro">Nli8 Bits Pilani</string>
 
 </resources>
