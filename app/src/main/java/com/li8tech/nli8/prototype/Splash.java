@@ -1,6 +1,8 @@
 package com.li8tech.nli8.prototype;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -41,9 +43,18 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
                 // This method will be executed once the timer is over
-                // Start your app main activity
-                Intent i = new Intent(Splash.this, MainActivity.class);
-                startActivity(i);
+
+               // SharedPreferences shf = getSharedPreferences("LogggedInUserName", Context.MODE_PRIVATE);
+             //   String strPref = shf.getString("UserName", null);
+
+              //  if(strPref != null) {
+                    // do some thing
+                    //Redirect to mainactivity
+                    Intent i = new Intent(Splash.this, MainActivity.class);
+                    startActivity(i);
+
+                    // Start your app main activity
+              //  }
 
                 // close this activity
                 finish();

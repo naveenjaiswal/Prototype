@@ -1,5 +1,6 @@
 package com.li8tech.nli8.prototype;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,12 +44,17 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private NoticeAdapter adapter;
     public Notice[] publicNotices;
+    private ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dialog = new ProgressDialog(this);
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.setMessage("Loading !!! please wait...");
         if(getIntent().hasExtra("id")){
             noticeUrl = noticeUrl + getIntent().getExtras().getString("id","");
         }
@@ -89,6 +95,8 @@ public class MainActivity extends AppCompatActivity
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
+        dialog.show();
+
 
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -108,6 +116,7 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(MyApplication.getAppContext(), R.string.no_data_found, Toast.LENGTH_LONG).show();
                 }
                 publicNotices = response;
+                adapter = new NoticeAdapter(response);
 
                 // Attach the adapter to the recyclerview to populate items
                 recyclerView.setAdapter(adapter);
@@ -124,6 +133,7 @@ public class MainActivity extends AppCompatActivity
                 adapter.addAll(Arrays.asList(response));
                 // Now we call setRefreshing(false) to signal refresh has finished
                 swipeContainer.setRefreshing(false);
+                dialog.dismiss();
             }
 
 
@@ -144,6 +154,11 @@ public class MainActivity extends AppCompatActivity
                     // Now we call setRefreshing(false) to signal refresh has finished
                     swipeContainer.setRefreshing(false);
                 }
+
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
+                dialog.dismiss();
+
             }
         };
     }
