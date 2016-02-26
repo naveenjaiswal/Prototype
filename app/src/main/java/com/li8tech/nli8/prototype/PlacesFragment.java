@@ -47,23 +47,7 @@ public class PlacesFragment extends Fragment {
         GsonRequest<Place[]> gsonRequest = new GsonRequest<Place[]>(placesUrl,Place[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET);
 
         requestQueue.add(gsonRequest);
-        /*JsonArrayRequest request = new JsonArrayRequest(medcUrl, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                parseJSONResponce(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }
-
-
-        );
-
-        requestQueue.add(request);*/
-    }
+   }
 
     private Response.Listener<Place[]> createNewAdapter() {
         return new Response.Listener<Place[]> () {
@@ -84,13 +68,6 @@ public class PlacesFragment extends Fragment {
                 // Add separator
                 rvPlaces.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
                 // That's all!
-                rvPlaces.setAdapter(adapter);
-
-                /*for (int i = 0; i < response.length; i++) {
-                    Toast.makeText(MyApplication.getAppContext(),
-                            "Movie : " + response[i].name,
-                            Toast.LENGTH_SHORT).show();
-                }*/
             }
 
 
@@ -105,8 +82,6 @@ public class PlacesFragment extends Fragment {
             }
         };
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

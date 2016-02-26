@@ -55,22 +55,7 @@ public class MedicalCenterFragment extends Fragment {
         GsonRequest<Doctor[]> gsonRequest = new GsonRequest<Doctor[]>(medcUrl,Doctor[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET);
 
         requestQueue.add(gsonRequest);
-        /*JsonArrayRequest request = new JsonArrayRequest(medcUrl, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                parseJSONResponce(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
 
-            }
-        }
-
-
-        );
-
-        requestQueue.add(request);*/
     }
 
     private Response.Listener<Doctor[]> createNewAdapter() {
@@ -92,13 +77,7 @@ public class MedicalCenterFragment extends Fragment {
                 // Add separator
                 rvDoctors.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
                 // That's all!
-                rvDoctors.setAdapter(adapter);
 
-                /*for (int i = 0; i < response.length; i++) {
-                    Toast.makeText(MyApplication.getAppContext(),
-                            "DOCTOR : " + response[i].name,
-                            Toast.LENGTH_SHORT).show();
-                }*/
             }
 
 

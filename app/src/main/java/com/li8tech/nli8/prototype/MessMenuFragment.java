@@ -68,7 +68,6 @@ public class MessMenuFragment extends Fragment {
                 // Add separator
                 rvMessMenu.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
                 // That's all!
-                rvMessMenu.setAdapter(adapter);
             }
 
 

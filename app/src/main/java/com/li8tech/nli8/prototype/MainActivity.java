@@ -3,10 +3,10 @@ package com.li8tech.nli8.prototype;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,9 +24,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.li8tech.nli8.prototype.adapters.NoticeAdapter;
+import com.li8tech.nli8.prototype.adapter.NoticeAdapter;
 import com.li8tech.nli8.prototype.pojo.Notice;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
+    private SwipeRefreshLayout swipeContainer;
 
     private String noticeUrl =  "http://pilock.pythonanywhere.com/api/notice/";
     private TextView mTextView ;
@@ -66,6 +68,27 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // Pull to refresh
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                GsonRequest<Notice[]> gsonRequest = new GsonRequest<Notice[]>(noticeUrl,Notice[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET);
+                requestQueue.add(gsonRequest);
+            }
+        });
+
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
 
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -73,8 +96,6 @@ public class MainActivity extends AppCompatActivity
         GsonRequest<Notice[]> gsonRequest = new GsonRequest<Notice[]>(noticeUrl,Notice[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET);
 
         requestQueue.add(gsonRequest);
-
-
     }
 
     private Response.Listener<Notice[]> createNewAdapter() {
@@ -96,10 +117,13 @@ public class MainActivity extends AppCompatActivity
                 // Add separator
                 recyclerView.addItemDecoration(new DividerItemDecoration(MyApplication.getAppContext(), DividerItemDecoration.VERTICAL_LIST));
                 // That's all!
-                recyclerView.setAdapter(adapter);
 
-
-
+                // Remember to CLEAR OUT old items before appending in the new ones
+                adapter.clear();
+                // ...the data has come back, add new items to your adapter...
+                adapter.addAll(Arrays.asList(response));
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
             }
 
 
@@ -113,14 +137,16 @@ public class MainActivity extends AppCompatActivity
 
                 mTextView.setText("No internet found!!! try again");
                 System.out.print(error.getStackTrace());
+
+                // Now we call setRefreshing(false) to signal refresh has finished
+                swipeContainer.setRefreshing(false);
+
             }
         };
     }
 
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
-
-//        adapter.setClickListener(this);
         return super.onCreateView(parent, name, context, attrs);
     }
 
@@ -167,7 +193,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_manage2) {
 
-            Intent intent = new Intent(MainActivity.this, DetailInfoActivity.class);
+            Intent intent = new Intent(MainActivity.this, MedicalCenterActivity.class);
             startActivity(intent);
 
             // Handle the camera action

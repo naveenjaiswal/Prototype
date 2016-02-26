@@ -10,8 +10,10 @@ import android.widget.TextView;
 import com.android.volley.toolbox.NetworkImageView;
 import com.li8tech.nli8.prototype.R;
 import com.li8tech.nli8.prototype.VolleySingleton;
+import com.li8tech.nli8.prototype.pojo.Notice;
 import com.li8tech.nli8.prototype.pojo.Pojo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -48,8 +50,11 @@ public class MessMenuAdapter extends RecyclerView.Adapter<MessMenuAdapter.ViewHo
     private List<Pojo.MessMenu> messMenus;
 
     // Pass in the contact array into the constructor
-    public MessMenuAdapter(Pojo.MessMenu[] movies) {
-        this.messMenus = Arrays.asList(movies);
+    public MessMenuAdapter(Pojo.MessMenu[] messMenus) {
+
+        this.messMenus = new ArrayList<Pojo.MessMenu>();
+        this.messMenus.addAll(Arrays.asList(messMenus));
+
     }
 
     // Usually involves inflating a layout from XML and returning the holder
