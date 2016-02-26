@@ -3,10 +3,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_local_dining_black_24dp"
-            android:title="ANC Menu" />
-        <item
             android:id="@+id/nav_mess_menu"
             android:icon="@drawable/ic_restaurant_menu_black_24dp"
             android:title="Mess Menu" />
@@ -25,7 +21,18 @@
             android:title="Medical Centre" />
 
     </group>
-
+    <item android:title="Events">
+        <menu>
+            <item
+                android:id="@+id/nav_share3"
+                android:icon="@drawable/ic_announcement_black_24dp"
+                android:title="APOGEE" />
+            <item
+                android:id="@+id/nav_share4"
+                android:icon="@drawable/ic_announcement_black_24dp"
+                android:title="OASIS" />
+        </menu>
+    </item>
     <item android:title="Clubs and Associations">
         <menu>
             <item
@@ -35,7 +42,7 @@
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_gallery"
-                android:title="DVM" />
+                android:title="CEL" />
         </menu>
     </item>
 
@@ -52,14 +59,6 @@
     </menu>
 </item>
 
-    <item android:title="Events">
-        <menu>
-            <item
-                android:id="@+id/nav_share3"
-                android:icon="@drawable/ic_announcement_black_24dp"
-                android:title="APOGEE" />
 
-        </menu>
-    </item>
 
 </menu>

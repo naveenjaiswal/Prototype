@@ -40,8 +40,12 @@ public class DetailsActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View myInflatedView =  inflater.inflate(R.layout.fragment_details, container, false);
+
         titleTV = (TextView)myInflatedView.findViewById(R.id.title_content);
         titleTV.setText(notice.title);
+        // Set Title
+        getActivity().setTitle(notice.title);
+
         bodyTV = (TextView)myInflatedView.findViewById(R.id.body_content);
         bodyTV.setText(notice.body);
         deptTV = (TextView)myInflatedView.findViewById(R.id.department_content);

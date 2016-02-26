@@ -30,7 +30,7 @@
             android:src="@drawable/googleg_color" />-->
 
         <TextView
-            android:id="@+id/title_head"
+            android:id="@+id/title_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -40,29 +40,6 @@
 
             android:textSize="@dimen/label_fontSize"
             android:paddingLeft="@dimen/label_leftMargin"/>
-
-
-        <TextView
-            android:id="@+id/title_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="title content"
-            android:gravity="left"
-            android:textColor="@android:color/black"
-            android:paddingLeft="@dimen/detail_leftMargin"
-            android:textSize="@dimen/detail_fontSize" />
-
-        <TextView
-            android:id="@+id/body_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="body head"
-            android:gravity="left"
-            android:textColor="@android:color/black"
-            android:paddingLeft="@dimen/label_leftMargin"
-            android:textSize="@dimen/label_fontSize" />
 
         <TextView
             android:id="@+id/body_content"
@@ -81,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Department head"
+            android:text="Department"
             android:gravity="left"
             android:textColor="@android:color/black"
             android:paddingLeft="@dimen/label_leftMargin"
@@ -104,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Event Date Head"
+            android:text="Event Date"
             android:gravity="left"
             android:textColor="@android:color/black"
             android:paddingLeft="@dimen/label_leftMargin"
@@ -125,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Contact Head"
+            android:text="Contact Person Details"
             android:gravity="left"
             android:textColor="@android:color/black"
             android:paddingLeft="@dimen/label_leftMargin"
@@ -147,7 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Venu Head"
+            android:text="Venue Details"
             android:gravity="left"
             android:textColor="@android:color/black"
             android:paddingLeft="@dimen/label_leftMargin"
@@ -168,11 +145,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Deadline Head"
+            android:text="Deadline Date"
             android:gravity="left"
             android:textColor="@android:color/black"
             android:paddingLeft="@dimen/label_leftMargin"
             android:textSize="@dimen/label_fontSize" />
+
         <TextView
             android:id="@+id/deadline_content"
             android:layout_width="wrap_content"

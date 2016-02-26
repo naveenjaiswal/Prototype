@@ -91,13 +91,10 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
         @Override
         public void onClick(View v) {
             Intent intent = new  Intent(context, DetailsActivity.class);
-            /*intent.putExtra("locKey",getLayoutPosition());*/
+
             intent.putExtra("notice",notices.get(getLayoutPosition()));
             context.startActivity(intent);
 
-
-
-            Toast.makeText(context,""+getLayoutPosition(),Toast.LENGTH_SHORT).show();
         }
     }
 
