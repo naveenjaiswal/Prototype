@@ -1,5 +1,6 @@
 package com.li8tech.nli8.prototype;
 
+import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,6 +41,7 @@ public class MedicalCenterFragment extends Fragment {
     private ImageLoader imageLoader;
     private String medcUrl = Pojo.API_BASE_URL + "doctors/";
     RecyclerView rvDoctors;
+    private ProgressDialog dialog;
 
     public MedicalCenterFragment() {
     }
@@ -48,6 +50,12 @@ public class MedicalCenterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        dialog = new ProgressDialog(getContext());
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.setMessage("Loading Medical Center data !!! please wait...");
+        dialog.show();
 
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -77,6 +85,7 @@ public class MedicalCenterFragment extends Fragment {
                 // Add separator
                 rvDoctors.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
                 // That's all!
+                dialog.dismiss();
 
             }
 
@@ -89,6 +98,7 @@ public class MedicalCenterFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.print(error.getStackTrace());
+                dialog.dismiss();
             }
         };
     }

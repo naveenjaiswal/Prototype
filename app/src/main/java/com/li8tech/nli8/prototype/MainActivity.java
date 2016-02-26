@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         dialog = new ProgressDialog(this);
         dialog.setIndeterminate(true);
         dialog.setCancelable(false);
-        dialog.setMessage("Loading !!! please wait...");
+        dialog.setMessage("Loading Notices !!! please wait...");
         if(getIntent().hasExtra("id")){
             noticeUrl = noticeUrl + getIntent().getExtras().getString("id","");
         }

@@ -1,5 +1,6 @@
 package com.li8tech.nli8.prototype;
 
+import android.app.ProgressDialog;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +33,7 @@ public class MessMenuFragment extends Fragment {
     private RequestQueue requestQueue;
     private String messUrl = Pojo.API_BASE_URL + "messmenu/";
     RecyclerView rvMessMenu;
+    private ProgressDialog dialog;
 
     public MessMenuFragment() {
     }
@@ -42,7 +44,11 @@ public class MessMenuFragment extends Fragment {
         super.onCreate(savedInstanceState);
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
-
+        dialog = new ProgressDialog(getContext());
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.setMessage("Loading Mess Menu !!! please wait...");
+        dialog.show();
         String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
         messUrl = messUrl + "?date="+today;
@@ -70,6 +76,8 @@ public class MessMenuFragment extends Fragment {
                 // Add separator
                 rvMessMenu.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
                 // That's all!
+                dialog.dismiss();
+
             }
 
 
@@ -81,6 +89,8 @@ public class MessMenuFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.print(error.getStackTrace());
+                dialog.dismiss();
+
             }
         };
     }

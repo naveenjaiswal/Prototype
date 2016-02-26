@@ -1,5 +1,6 @@
 package com.li8tech.nli8.prototype;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,6 +32,7 @@ public class MovieFragment extends Fragment {
     private ImageLoader imageLoader;
     private String movieUrl = Pojo.API_BASE_URL + "movies/";
     RecyclerView rvMovies;
+    private ProgressDialog dialog;
 
     public MovieFragment() {
     }
@@ -39,6 +41,11 @@ public class MovieFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialog = new ProgressDialog(getContext());
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(false);
+        dialog.setMessage("Loading Upcoming Movie !!! please wait...");
+        dialog.show();
 
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -66,6 +73,7 @@ public class MovieFragment extends Fragment {
                 // Add separator
                 rvMovies.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
                 // That's all!
+                dialog.dismiss();
             }
 
 
@@ -77,6 +85,7 @@ public class MovieFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 System.out.print(error.getStackTrace());
+                dialog.dismiss();
             }
         };
     }
