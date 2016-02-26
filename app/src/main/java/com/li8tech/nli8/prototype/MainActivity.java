@@ -3,6 +3,7 @@ package com.li8tech.nli8.prototype;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +27,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.li8tech.nli8.prototype.adapter.NoticeAdapter;
+import com.li8tech.nli8.prototype.pojo.LoggedInUser;
 import com.li8tech.nli8.prototype.adapter.NoticeAdapter;
 import com.li8tech.nli8.prototype.pojo.Notice;
 
@@ -32,18 +42,19 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
 
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
     private SwipeRefreshLayout swipeContainer;
-
+    private GoogleApiClient mGoogleApiClient;
     private String noticeUrl =  "http://pilock.pythonanywhere.com/api/notice/";
     private TextView mTextView ;
     private RecyclerView recyclerView;
     private NoticeAdapter adapter;
     public Notice[] publicNotices;
+    public SharedPreferences preferences;
     private ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +70,29 @@ public class MainActivity extends AppCompatActivity
             noticeUrl = noticeUrl + getIntent().getExtras().getString("id","");
         }
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        if(getIntent().hasExtra("LoggedInUserDetails")){
+            //LoggedInUser user=(LoggedInUser)(getIntent().getExtras().getString("LoggedInUserDetails"));
+            LoggedInUser user;
+            user = (LoggedInUser) getIntent().getParcelableExtra("LoggedInUserDetails");
+            preferences =  MyApplication.getAppContext().getSharedPreferences("LogggedInUserName",Context.MODE_PRIVATE);
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("UserName",user.FullName);
+                editor.commit();
+                CharSequence welcomeMessage = "Welcome "+user.FullName;
+                Toast toast = Toast.makeText(MyApplication.getAppContext(),welcomeMessage,Toast.LENGTH_SHORT);
+                toast.show();
+
+        }
+        CheckLoggedInSession();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -194,13 +228,30 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+// click for logout
+            signOut();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void signOut() {
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                        // [START_EXCLUDE]
+                        SharedPreferences preferences = getSharedPreferences("LogggedInUserName", 0);
+                        preferences.edit().remove("UserName").commit();
 
+                        Intent intent = new Intent(MainActivity.this, SingInActivity.class);
+                        startActivity(intent);
+                        finish();
+                        // [END_EXCLUDE]
+                    }
+                });
+    }
 
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -241,6 +292,40 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        // An unresolvable error has occurred and Google APIs (including Sign-In) will not
+        // be available.
+        //Log.d(TAG, "onConnectionFailed:" + connectionResult);
+    }
+    public void onClick(View v) {
 
+    }
+    public  void CheckLoggedInSession()
+    {
+        String strPref;
+        SharedPreferences shf = getSharedPreferences("LogggedInUserName", Context.MODE_PRIVATE);
+        if(shf!=null) {
+            strPref = shf.getString("UserName", null);
+
+            if (strPref != null) {
+                // do some thing
+                //Redirect to mainactivity
+                //Intent intent = new Intent(Splash.this, MainActivity.class);
+               // startActivity(intent);
+               // finish();
+            }
+            else
+            {
+                Intent i = new Intent(MainActivity.this, SingInActivity.class);
+                startActivity(i);
+            }
+        }
+        else
+        {
+            Intent i = new Intent(MainActivity.this, SingInActivity.class);
+            startActivity(i);
+        }
+
+    }
 
 }

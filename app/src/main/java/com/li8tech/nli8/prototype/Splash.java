@@ -43,18 +43,34 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
                 // This method will be executed once the timer is over
+                // Start your app main activity
 
-               // SharedPreferences shf = getSharedPreferences("LogggedInUserName", Context.MODE_PRIVATE);
-             //   String strPref = shf.getString("UserName", null);
+                // check if user is already logged in then sent it to home page otherwise to login page
+                String strPref;
+                SharedPreferences shf = getSharedPreferences("LogggedInUserName", Context.MODE_PRIVATE);
+                if(shf!=null) {
+                    strPref = shf.getString("UserName", null);
 
-              //  if(strPref != null) {
-                    // do some thing
-                    //Redirect to mainactivity
-                    Intent i = new Intent(Splash.this, MainActivity.class);
+                    if (strPref != null) {
+                        // do some thing
+                        //Redirect to mainactivity
+                        Intent intent = new Intent(Splash.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else
+                    {
+                        Intent i = new Intent(Splash.this, SingInActivity.class);
+                        startActivity(i);
+                    }
+                }
+                else
+                {
+                    Intent i = new Intent(Splash.this, SingInActivity.class);
                     startActivity(i);
+                }
 
-                    // Start your app main activity
-              //  }
+
 
                 // close this activity
                 finish();
