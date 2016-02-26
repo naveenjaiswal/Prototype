@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -43,6 +44,7 @@ public class MessMenuFragment extends Fragment {
         requestQueue = volleySingleton.getRequestQueue();
 
         String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
         messUrl = messUrl + "?date="+today;
         GsonRequest<MessMenu[]> gsonRequest = new GsonRequest<MessMenu[]>(messUrl,MessMenu[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET);
         requestQueue.add(gsonRequest);
@@ -88,6 +90,12 @@ public class MessMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_mess_menu, container, false);
+        View returnView = inflater.inflate(R.layout.fragment_mess_menu, container, false);
+
+        String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        TextView date = (TextView) returnView.findViewById(R.id.date);
+        date.setText("Menu for " + today);
+
+        return returnView;
     }
 }

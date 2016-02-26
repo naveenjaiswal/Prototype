@@ -1,6 +1,7 @@
 package com.li8tech.nli8.prototype.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,13 +9,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.li8tech.nli8.prototype.MainActivity;
+import com.li8tech.nli8.prototype.MyApplication;
 import com.li8tech.nli8.prototype.R;
 import com.li8tech.nli8.prototype.VolleySingleton;
+import com.li8tech.nli8.prototype.pojo.Contact;
 import com.li8tech.nli8.prototype.pojo.Notice;
 import com.li8tech.nli8.prototype.pojo.Pojo;
+import com.wefika.flowlayout.FlowLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -28,9 +34,8 @@ public class MessMenuAdapter extends RecyclerView.Adapter<MessMenuAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public TextView date;
         public TextView time;
-        public TextView fooditems;
+        public FlowLayout fooditems;
 
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
@@ -38,10 +43,8 @@ public class MessMenuAdapter extends RecyclerView.Adapter<MessMenuAdapter.ViewHo
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
-
-            date = (TextView) itemView.findViewById(R.id.date);
             time = (TextView) itemView.findViewById(R.id.time);
-            fooditems = (TextView) itemView.findViewById(R.id.fooditems);
+            fooditems = (FlowLayout) itemView.findViewById(R.id.fooditems);
 
         }
     }
@@ -77,25 +80,28 @@ public class MessMenuAdapter extends RecyclerView.Adapter<MessMenuAdapter.ViewHo
         // Get the data model based on position
         Pojo.MessMenu messMenu = messMenus.get(position);
 
-        // Set item views based on the data model
-        viewHolder.date.setText(messMenu.date);
-
-
         if(Pojo.timeTypeMap.containsKey(messMenu.time)){
             viewHolder.time.setText(Pojo.timeTypeMap.get(messMenu.time));
         }else{
             viewHolder.time.setText("Default");
         }
 
+        FlowLayout.LayoutParams params = new FlowLayout.LayoutParams(FlowLayout.LayoutParams.WRAP_CONTENT, FlowLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(5, 5, 5, 5);
 
-        StringBuilder itemsString = new StringBuilder();
-        for(Pojo.Item item:messMenu.items){
-            itemsString.append(item.name);
-            itemsString.append(" ");
+        Iterator<Pojo.Item> iterFoodItem = messMenu.items.iterator();
+        while(iterFoodItem.hasNext())
+        {
+            Pojo.Item item = iterFoodItem.next();
+            TextView t = new TextView(MyApplication.getAppContext());
+            t.setLayoutParams(params);
+            t.setPadding(5, 5, 5, 5);
+            t.setText(item.name);
+            t.setTextColor(Color.WHITE);
+            t.setBackgroundColor(Color.GRAY);
+            viewHolder.fooditems.addView(t);
         }
-        viewHolder.fooditems.setText(itemsString);
     }
-
     // Return the total count of items
     @Override
     public int getItemCount() {
