@@ -102,12 +102,12 @@ public class MainActivity extends AppCompatActivity
         return new Response.Listener<Notice[]> () {
             @Override
             public void onResponse(Notice[] response) {
-
+                mTextView.setText("");
+                adapter = new NoticeAdapter(response);
                 if(response.length == 0){
                     Toast.makeText(MyApplication.getAppContext(), R.string.no_data_found, Toast.LENGTH_LONG).show();
                 }
                 publicNotices = response;
-                adapter = new NoticeAdapter(response);
 
                 // Attach the adapter to the recyclerview to populate items
                 recyclerView.setAdapter(adapter);
@@ -134,13 +134,16 @@ public class MainActivity extends AppCompatActivity
         return new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                adapter = new NoticeAdapter(new Notice[0]);
 
                 mTextView.setText("No internet found!!! try again");
                 System.out.print(error.getStackTrace());
-
-                // Now we call setRefreshing(false) to signal refresh has finished
-                swipeContainer.setRefreshing(false);
-
+                if(adapter != null){
+                    // Remember to CLEAR OUT old items before appending in the new ones
+                    adapter.clear();
+                    // Now we call setRefreshing(false) to signal refresh has finished
+                    swipeContainer.setRefreshing(false);
+                }
             }
         };
     }

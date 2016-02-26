@@ -11,6 +11,8 @@
     <dimen name="detail_leftMargin">6dp</dimen>
     <dimen name="label_fontSize">20sp</dimen>
     <dimen name="detail_fontSize">14dp</dimen>
+    <dimen name="header">20dp</dimen>
+    <dimen name="body">16dp</dimen>
 
 
 </resources>
