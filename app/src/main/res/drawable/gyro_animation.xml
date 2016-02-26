@@ -11,9 +11,9 @@
     <!--<item
         android:drawable="@drawable/frame_2_delay_0005s"
         android:duration="50"/>-->
-    <item
+    <!--<item
         android:drawable="@drawable/frame_3_delay_0005s"
-        android:duration="50"/>
+        android:duration="50"/>-->
     <!--<item
         android:drawable="@drawable/frame_4_delay_0005s"
         android:duration="50"/>-->
@@ -26,102 +26,102 @@
    <!-- <item
         android:drawable="@drawable/frame_7_delay_0005s"
         android:duration="50"/>-->
-    <item
+    <!--<item
         android:drawable="@drawable/frame_8_delay_0005s"
-        android:duration="50"/>
-   <!-- <item
-        android:drawable="@drawable/frame_9_delay_0005s"
         android:duration="50"/>-->
+    <item
+        android:drawable="@drawable/frame_9_delay_0005s"
+        android:duration="50"/>
     <!--<item
         android:drawable="@drawable/frame_10_delay_0005s"
         android:duration="50"/>-->
-    <item
+    <!--<item
         android:drawable="@drawable/frame_11_delay_0005s"
-        android:duration="50"/>
-  <!--  <item
-        android:drawable="@drawable/frame_12_delay_0005s"
         android:duration="50"/>-->
     <!--<item
-        android:drawable="@drawable/frame_13_delay_0005s"
+        android:drawable="@drawable/frame_12_delay_0005s"
         android:duration="50"/>-->
     <item
-        android:drawable="@drawable/frame_14_delay_0005s"
+        android:drawable="@drawable/frame_13_delay_0005s"
         android:duration="50"/>
-   <!-- <item
+    <!--<item
+        android:drawable="@drawable/frame_14_delay_0005s"
+        android:duration="50"/>-->
+    <!--<item
          android:drawable="@drawable/frame_15_delay_0005s"
          android:duration="50"/>-->
-     <!-- <item
+    <!--<item
          android:drawable="@drawable/frame_16_delay_0005s"
          android:duration="50"/>-->
      <item
          android:drawable="@drawable/frame_17_delay_0005s"
          android:duration="50"/>
-   <!--  <item
+    <!--<item
          android:drawable="@drawable/frame_18_delay_0005s"
          android:duration="50"/>-->
     <!--<item
         android:drawable="@drawable/frame_19_delay_0005s"
         android:duration="50"/>-->
-    <item
+    <!--<item
         android:drawable="@drawable/frame_20_delay_0005s"
-        android:duration="50"/>
-  <!--  <item
-        android:drawable="@drawable/frame_21_delay_0005s"
         android:duration="50"/>-->
-     <item
+    <item
+        android:drawable="@drawable/frame_21_delay_0005s"
+        android:duration="50"/>
+     <!--<item
          android:drawable="@drawable/frame_22_delay_0005s"
-         android:duration="50"/>
+         android:duration="50"/>-->
     <!--  <item
          android:drawable="@drawable/frame_23_delay_0005s"
          android:duration="50"/>-->
-     <item
-         android:drawable="@drawable/frame_24_delay_0005s"
-         android:duration="50"/>
      <!--<item
-         android:drawable="@drawable/frame_25_delay_0005s"
+         android:drawable="@drawable/frame_24_delay_0005s"
          android:duration="50"/>-->
      <item
-         android:drawable="@drawable/frame_26_delay_0005s"
+         android:drawable="@drawable/frame_25_delay_0005s"
          android:duration="50"/>
+     <!--<item
+         android:drawable="@drawable/frame_26_delay_0005s"
+         android:duration="50"/>-->
    <!--  <item
          android:drawable="@drawable/frame_27_delay_0005s"
          android:duration="50"/>-->
-     <item
-         android:drawable="@drawable/frame_28_delay_0005s"
-         android:duration="50"/>
      <!--<item
-         android:drawable="@drawable/frame_29_delay_0005s"
+         android:drawable="@drawable/frame_28_delay_0005s"
          android:duration="50"/>-->
      <item
-         android:drawable="@drawable/frame_30_delay_0005s"
+         android:drawable="@drawable/frame_29_delay_0005s"
          android:duration="50"/>
+     <!--<item
+         android:drawable="@drawable/frame_30_delay_0005s"
+         android:duration="50"/>-->
     <!-- <item
          android:drawable="@drawable/frame_31_delay_0005s"
          android:duration="50"/>-->
-     <item
-         android:drawable="@drawable/frame_32_delay_0005s"
-         android:duration="50"/>
      <!--<item
          android:drawable="@drawable/frame_32_delay_0005s"
          android:duration="50"/>-->
      <item
-         android:drawable="@drawable/frame_33_delay_0005s"
+         android:drawable="@drawable/frame_32_delay_0005s"
          android:duration="50"/>
+     <!--<item
+         android:drawable="@drawable/frame_33_delay_0005s"
+         android:duration="50"/>-->
      <!--<item
          android:drawable="@drawable/frame_34_delay_0005s"
          android:duration="50"/>-->
-     <item
-         android:drawable="@drawable/frame_35_delay_0005s"
-         android:duration="50"/>
      <!--<item
-         android:drawable="@drawable/frame_36_delay_0005s"
+         android:drawable="@drawable/frame_35_delay_0005s"
          android:duration="50"/>-->
+     <item
+         android:drawable="@drawable/frame_36_delay_0005s"
+         android:duration="50"/>
     <!-- <item
          android:drawable="@drawable/frame_37_delay_0005s"
          android:duration="50"/>-->
-     <item
+    <!-- <item
          android:drawable="@drawable/frame_38_delay_0005s"
-         android:duration="50"/>
+         android:duration="50"/>-->
     <!-- <item
          android:drawable="@drawable/frame_39_delay_0005s"
          android:duration="50"/>-->
@@ -134,13 +134,5 @@
      <item
          android:drawable="@drawable/frame_42_delay_5s"
          android:duration="3000"/>
-
-
-
-
-
-
-
-
 
 </animation-list>
