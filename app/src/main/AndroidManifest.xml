@@ -56,7 +56,12 @@
         <activity
             android:name=".PlacesInfoActivity"
             android:label="@string/title_activity_places_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.li8tech.nli8.prototype.MainActivity" />
+
+        </activity>
         <activity
             android:name=".Splash"
             android:label="@string/title_activity_splash"
@@ -66,10 +71,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            android:theme="@style/AppTheme.NoActionBar" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.li8tech.nli8.prototype.MainActivity" />
+
+
         </activity>
     </application>
 
