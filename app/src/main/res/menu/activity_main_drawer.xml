@@ -24,11 +24,11 @@
     <item android:title="Events">
         <menu>
             <item
-                android:id="@+id/nav_share3"
+                android:id="@+id/nav_cat_1"
                 android:icon="@drawable/ic_announcement_black_24dp"
                 android:title="APOGEE" />
             <item
-                android:id="@+id/nav_share4"
+                android:id="@+id/nav_cat_2"
                 android:icon="@drawable/ic_announcement_black_24dp"
                 android:title="OASIS" />
         </menu>
@@ -36,11 +36,11 @@
     <item android:title="Clubs and Associations">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_cat_3"
                 android:icon="@drawable/ic_code_black_24dp"
                 android:title="CSA" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_cat_4"
                 android:icon="@drawable/ic_menu_gallery"
                 android:title="CEL" />
         </menu>
@@ -49,11 +49,11 @@
     <item android:title="Departments">
     <menu>
         <item
-            android:id="@+id/nav_share2"
+            android:id="@+id/nav_cat_5"
             android:icon="@drawable/ic_view_comfy_black_24dp"
             android:title="CSIS" />
         <item
-            android:id="@+id/nav_send2"
+            android:id="@+id/nav_cat_6"
             android:icon="@drawable/ic_view_comfy_black_24dp"
             android:title="Civil" />
     </menu>

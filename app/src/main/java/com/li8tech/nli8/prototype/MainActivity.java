@@ -261,30 +261,47 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_manage2) {
-
             Intent intent = new Intent(MainActivity.this, MedicalCenterActivity.class);
             startActivity(intent);
-
             // Handle the camera action
         } else if (id == R.id.nav_mess_menu) {
             Intent intent = new Intent(MainActivity.this, MessMenuActivity.class);
             startActivity(intent);
-
         } else if (id == R.id.nav_raf) {
             Intent intent = new Intent(MainActivity.this, MovieActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_mess_menu) {
-            Intent intent = new Intent(MainActivity.this, MessMenuActivity.class);
+        } else if(id == R.id.nav_timings){
+            Intent intent = new Intent(MainActivity.this,PlacesInfoActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_cat_1) {
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
             intent.putExtra("id","?category=1");
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-        } else if (id == R.id.nav_send) {
-
-        } else if(id == R.id.nav_timings){
-            Intent intent = new Intent(MainActivity.this,PlacesInfoActivity.class);
+        } else if (id == R.id.nav_cat_2) {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            intent.putExtra("id","?category=2");
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (id == R.id.nav_cat_3) {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            intent.putExtra("id","?category=8");
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (id == R.id.nav_cat_4) {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            intent.putExtra("id","?category=4");
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (id == R.id.nav_cat_5) {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            intent.putExtra("id","?category=5");
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (id == R.id.nav_cat_6) {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            intent.putExtra("id","?category=6");
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
 
