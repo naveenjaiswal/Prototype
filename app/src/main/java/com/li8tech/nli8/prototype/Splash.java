@@ -43,12 +43,13 @@ public class Splash extends AppCompatActivity {
             @Override
             public void run() {
 
-                
+
+
                 // This method will be executed once the timer is over
                 // Start your app main activity
 
                 // check if user is already logged in then sent it to home page otherwise to login page
-                String strPref;
+               String strPref;
                 SharedPreferences shf = getSharedPreferences("LogggedInUserName", Context.MODE_PRIVATE);
                 if(shf!=null) {
                     strPref = shf.getString("UserName", null);
