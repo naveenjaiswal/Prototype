@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -158,6 +159,16 @@ public class SingInActivity extends AppCompatActivity implements GoogleApiClient
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             //updateUI(true);
 
+            /**
+             * Check if the user belongs to bits domain or not
+             */
+            if(!acct.getEmail().contains("pilani.bits-pilani.ac.in")){
+                revokeAccess();
+                Toast.makeText(getApplicationContext(), "Only sign in with BITS email account.",
+                        Toast.LENGTH_LONG).show();
+                return;
+            }
+
             Intent intent = new Intent(SingInActivity.this, MainActivity.class);
             LoggedInUser user=new LoggedInUser();
             user.Email=acct.getEmail();
@@ -209,6 +220,7 @@ public class SingInActivity extends AppCompatActivity implements GoogleApiClient
         // be available.
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
     }
+
     private void revokeAccess() {
         Auth.GoogleSignInApi.revokeAccess(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
