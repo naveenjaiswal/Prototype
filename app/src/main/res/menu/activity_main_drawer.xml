@@ -47,18 +47,20 @@
     </item>
 
     <item android:title="Departments">
-    <menu>
-        <item
-            android:id="@+id/nav_cat_5"
-            android:icon="@drawable/ic_view_comfy_black_24dp"
-            android:title="CSIS" />
-        <item
-            android:id="@+id/nav_cat_6"
-            android:icon="@drawable/ic_view_comfy_black_24dp"
-            android:title="Civil" />
-    </menu>
-</item>
-
+        <menu>
+            <item
+                android:id="@+id/nav_cat_5"
+                android:icon="@drawable/ic_view_comfy_black_24dp"
+                android:title="CSIS" />
+            <item
+                android:id="@+id/nav_cat_6"
+                android:icon="@drawable/ic_view_comfy_black_24dp"
+                android:title="Civil" />
+        </menu>
+    </item>
+    <item android:title="About"
+          android:id="@+id/about">
+    </item>
 
 
 </menu>

@@ -15,7 +15,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,7 +34,6 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.li8tech.nli8.prototype.adapter.NoticeAdapter;
 import com.li8tech.nli8.prototype.pojo.LoggedInUser;
-import com.li8tech.nli8.prototype.adapter.NoticeAdapter;
 import com.li8tech.nli8.prototype.pojo.Notice;
 
 import java.util.Arrays;
@@ -302,6 +300,9 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
             intent.putExtra("id","?category=6");
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if(id == R.id.about){
+            Intent intent = new Intent(MainActivity.this, AboutUsActivity.class);
             startActivity(intent);
         }
 

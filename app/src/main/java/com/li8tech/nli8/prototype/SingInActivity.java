@@ -161,6 +161,8 @@ public class SingInActivity extends AppCompatActivity implements GoogleApiClient
 
             /**
              * Check if the user belongs to bits domain or not
+             *
+             * Possible chances on NPE when account returns null email
              */
             if(!acct.getEmail().contains("pilani.bits-pilani.ac.in")){
                 revokeAccess();

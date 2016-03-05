@@ -64,5 +64,9 @@
     <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
          from https://console.developers.google.com/ -->
     <string name="server_client_id">YOUR_SERVER_CLIENT_ID</string>
+    <string name="title_activity_about">About</string>
+
+    <string name="aboutus">"NLi8 is created with the aim of keeping oneself aware about everything that goes around in the campus. \n\nDeveloped by: \n\n Sudhir Mishra (h2-15) \n\n Digvijay Singh \n\n Naveen Jaiswal \n\nAny feedback is appreciated at sudhirxps+nli8@gmail.com "</string>
+
 
 </resources>
