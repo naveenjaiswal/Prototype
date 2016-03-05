@@ -162,7 +162,9 @@ public class SingInActivity extends AppCompatActivity implements GoogleApiClient
             LoggedInUser user=new LoggedInUser();
             user.Email=acct.getEmail();
             user.FullName=acct.getDisplayName();
-            user.PhotoURL=acct.getPhotoUrl().toString();
+            if(acct.getPhotoUrl() != null) {
+                user.PhotoURL = acct.getPhotoUrl().toString();
+            }
             intent.putExtra("LoggedInUserDetails",user);
            // intent.putExtra("LoggedInName",acct.getDisplayName());
             //intent.putExtra("LoggedInEmail",acct.getEmail());
