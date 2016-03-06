@@ -13,6 +13,8 @@ import com.android.volley.toolbox.Volley;
 public class VolleySingleton {
 
     private  static  VolleySingleton  sInstance = null;
+    public static final String BASE_API_URL = "http://pilock.pythonanywhere.com/api/";
+    public static final String NOTICE_URL_SEGMENT = "notice/";
     private RequestQueue mRequestQueue ;
     private ImageLoader imageLoader ;
 

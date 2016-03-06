@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity
         dialog.setMessage("Loading Notices !!! please wait...");
         if(getIntent().hasExtra("id")){
             noticeUrl = noticeUrl + getIntent().getExtras().getString("id","");
+            System.out.print(noticeUrl);
         }
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -251,7 +252,22 @@ public class MainActivity extends AppCompatActivity
                 });
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        // getIntent() should always return the most recent
+        setIntent(intent);
+        if(getIntent().hasExtra("id")){
+            String url = VolleySingleton.BASE_API_URL + VolleySingleton.NOTICE_URL_SEGMENT + getIntent().getExtras().getString("id","");
+            System.out.print(noticeUrl);
+            volleySingleton = VolleySingleton.getInstance();
+            requestQueue = volleySingleton.getRequestQueue();
 
+            GsonRequest<Notice[]> gsonRequest = new GsonRequest<Notice[]>(url,Notice[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET);
+
+            requestQueue.add(gsonRequest);
+        }
+    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -311,6 +327,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
     public void onConnectionFailed(ConnectionResult connectionResult) {
+        // TODO Implement a fallback to account creation or error page
         // An unresolvable error has occurred and Google APIs (including Sign-In) will not
         // be available.
         //Log.d(TAG, "onConnectionFailed:" + connectionResult);

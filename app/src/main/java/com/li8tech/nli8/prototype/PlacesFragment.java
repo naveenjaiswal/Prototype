@@ -52,7 +52,7 @@ public class PlacesFragment extends Fragment {
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
 
-        GsonRequest<Place[]> gsonRequest = new GsonRequest<Place[]>(placesUrl,Place[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET);
+        GsonRequest<Place[]> gsonRequest = new GsonRequest<Place[]>(placesUrl,Place[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET,true);
 
         requestQueue.add(gsonRequest);
    }

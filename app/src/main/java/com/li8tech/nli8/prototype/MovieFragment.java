@@ -50,7 +50,7 @@ public class MovieFragment extends Fragment {
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
 
-        GsonRequest<Movie[]> gsonRequest = new GsonRequest<Movie[]>(movieUrl,Movie[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET);
+        GsonRequest<Movie[]> gsonRequest = new GsonRequest<Movie[]>(movieUrl,Movie[].class,new HashMap<String,String>(),createNewAdapter(),handleException(), Request.Method.GET,true);
         requestQueue.add(gsonRequest);
     }
 

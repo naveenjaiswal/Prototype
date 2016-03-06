@@ -17,7 +17,7 @@
     <string name="api_base_url">"http://pilock.pythonanywhere.com/api/"</string>
     <string name="default_text">This is a default text</string>
     <string name="no_data_found">No Data Found</string>
-    <string name="title_activity_places_info">Places</string>
+    <string name="title_activity_places_info">Working Hours</string>
     <string name="title_activity_splash">Splash</string>
     <string name="gyro">Nli8 Bits Pilani</string>
 
@@ -67,6 +67,9 @@
     <string name="title_activity_about">About</string>
 
     <string name="aboutus">"NLi8 is created with the aim of keeping oneself aware about everything that goes around in the campus. \n\nDeveloped by: \n\n Sudhir Mishra (h2-15) \n\n Digvijay Singh \n\n Naveen Jaiswal \n\nAny feedback is appreciated at sudhirxps+nli8@gmail.com "</string>
+    <string name="messMenuTitle">Mess Menu</string>
+    <string name="movieActivityTitle">Movies</string>
+    <string name="title_activity_main">Notices</string>
 
 
 </resources>
